@@ -3,6 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Layout from './layout';
 import { NotAuthenRouter } from './router-config';
 import HomePage from './screens/HomePage';
+import Login from './screens/Login';
 
 const AppRouter = () => {
   const [routerConfig, setRouterConfig] = useState([]);
@@ -38,6 +39,7 @@ const AppRouter = () => {
       <Routes>
         {/* {renderRouter()} */}
         <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   )

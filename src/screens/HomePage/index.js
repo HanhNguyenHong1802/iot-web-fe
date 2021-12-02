@@ -1,13 +1,13 @@
 import React from 'react'
-import tw from 'twin.macro'
 import NavTop from '../../layout/components/NavTop/NavTop'
+import WorldMap from './components/WorldMap'
 
-const HomePage = ()=> {
-    console.log("object")
-    return (
-        <>
-            <NavTop/>
-        </>
-    )
+const HomePage = () => {
+  return (
+    <>
+      <NavTop />
+      <WorldMap />
+    </>
+  )
 }
 export default HomePage
