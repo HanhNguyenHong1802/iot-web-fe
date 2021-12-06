@@ -1,11 +1,11 @@
-import React, { useCallback, useState } from 'react'
+import { motion } from 'framer-motion';
+import React, { useCallback, useState } from 'react';
 import { useLocation } from 'react-router';
-import navTopConfigs from '../../../configs/navTopConfigs'
-import tw, { styled } from 'twin.macro'
-import { useNavigate } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import DarkMode from '../../../ModeScreen/DarkMode';
+import { useNavigate } from 'react-router-dom';
+import tw, { styled } from 'twin.macro';
+import navTopConfigs from '../../../configs/navTopConfigs';
 import NavUser from './NavUser';
+import './style.css';
 
 const ItemContainer = styled.div`
   ${`height:78px; padding-top:16px; `}
@@ -19,7 +19,7 @@ const Dropdown = styled(motion.div)(() => [
   tw`h-auto w-48 border-t border-blue-400 shadow-md bg-gray-100 mt-4 absolute flex flex-col `,
 ])
 const DropdownItem = tw.div`w-full p-2 cursor-pointer my-1 text-lg text-black border-b transform transition-all duration-75 hover:bg-gray-200`
-const HeaderContainer = tw.div`h-16 w-full shadow-md fixed top-0 animate-bounce z-40 flex justify-between `
+const HeaderContainer = tw.div`h-16 w-full shadow-md fixed top-0 animate-bounce z-40 flex justify-between`
 const BorderContainer = tw.div`w-full flex xl:max-w-screen-xl lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm mx-auto`
 const LogoHeader = tw.img`cursor-pointer ml-auto sm:ml-0 h-full`
 const IconListSideBar = tw.img`w-8 h-8 cursor-pointer block lg:hidden my-auto mr-3`
@@ -44,6 +44,7 @@ const RenderNavItems = () => {
         <LinkItem isActive={isActive || !pathName.indexOf(x.navLink)} onClick={() => x.item.length === 0 && history(x.navLink)}  >{x.id}</LinkItem>
         {Array.isArray(x.item) && x.item.length > 0 &&
           <Dropdown
+            className="bg-memu-bar"
             variants={{
               current: {
                 opacity: 1,
@@ -80,7 +81,7 @@ const NavTop = ({ OpenClick }) => {
     OpenClick && OpenClick()
   }
   return (
-    <HeaderContainer>
+    <HeaderContainer className="bg-memu-bar">
       <BorderContainer>
         <LogoHeader src="hot-weather.png" alt="Logo" onClick={() => history.push('/')} />
         <NavBar>

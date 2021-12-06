@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router';
 import tw, { styled } from 'twin.macro';
 import avatarDefault from '../../../assets/avatar_default.png';
 import DarkMode from '../../../ModeScreen/DarkMode';
+import './style.css'
 
 const RightNavBar = tw.div`flex items-center ml-auto`
 const UserContainer = styled.div`
@@ -49,6 +50,7 @@ const NavUser = () => {
         <Avatar src={avatar ? avatar : avatarDefault} alt="avatar" />
         <NameUser>{userName || "User"}</NameUser>
         <Dropdown
+          className="bg-memu-bar"
           variants={{
             current: {
               opacity: 1,
