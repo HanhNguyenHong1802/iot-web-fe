@@ -1,12 +1,13 @@
 import { useState } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import AppRouter from './Router';
-import Map from './screens/HomePage/components/WorldMap';
 
 const App = () => {
   const [mode, setMode] = useState(true)
   const [show, setShow] = useState(false)
-  const key = process.env.API_MAP_KEY
+
   window.addEventListener('offline', (e) => { console.log('offline', e); setMode(false) });
 
   window.addEventListener('online', (e) => { console.log('online', e); setShow(true); setTimeout(() => { setMode(true); setShow(false) }, 1500) });
@@ -19,6 +20,7 @@ const App = () => {
         </div>
       }
       <AppRouter />
+      <ToastContainer />
     </div>
   );
 }

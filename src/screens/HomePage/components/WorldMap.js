@@ -4,6 +4,7 @@ import ReactMapGL, { FullscreenControl, GeolocateControl, Marker, Popup } from '
 import tw, { styled } from 'twin.macro';
 import { MapContextProvider, useMapContext } from '../context';
 import "../style.css";
+import NearestCityInfo from './NearestCityInfo';
 
 const HeaderContainer = tw.div`flex pt-7 justify-around items-center`
 const Header = tw.h1`w-1/3`
@@ -27,15 +28,14 @@ const CircleIcon = styled.div(({ props }) => [
 
 const WorldMapImpl = () => {
   const mapRef = useRef();
-  const { geocodingCity } = useMapContext()
+  const { geocodingCity } = useMapContext();
   const [viewport, setViewport] = useState({
-    width: "100%",
+    width: "50%",
     height: 600,
     latitude: 21.437,
     longitude: 105.123,
     zoom: 4
   });
-
   const [popupIndex, setPopUpIndex] = useState(false)
 
   const renderPopup = ({ item }) => {
@@ -45,8 +45,8 @@ const WorldMapImpl = () => {
           <Popup
             tipSize={5}
             anchor="bottom-left"
-            longitude={item?.data.location.coordinates[0]}
-            latitude={item?.data.location.coordinates[1]}
+            longitude={item?.data?.location?.coordinates[0] || 105.123}
+            latitude={item?.data?.location?.coordinates[1] || 21.437}
             onMouseLeave={(e) => {
               e.preventDefault();
               setPopUpIndex(false);
@@ -65,7 +65,6 @@ const WorldMapImpl = () => {
     right: 10,
     bottom: 10
   };
-  console.log(`geocodingCity`, geocodingCity)
 
 
   return (
@@ -75,56 +74,58 @@ const WorldMapImpl = () => {
         <SearchBar placeholder="   Your country, city or location ..." />
         <Search style={{ position: 'absolute', right: 0, marginRight: '6.2rem', background: "#fff" }} />
       </HeaderContainer>
+      <div style={{display:'flex', gap:'50px'}}>
+        <ReactMapGL
+          ref={mapRef}
+          {...viewport}
+          mapStyle="mapbox://styles/mapbox/streets-v11"
+          onViewportChange={nextViewport => setViewport(nextViewport)}
+          mapboxApiAccessToken={process.env.REACT_APP_MAP_API_TOKEN}>
+          {
+            geocodingCity.length > 0 && geocodingCity?.map((item) => (
+              <div>
+                <Marker
+                  key={item?.data?.city || "Hanoi"}
+                  longitude={item?.data?.location?.coordinates[0] || 105.123}
+                  latitude={item?.data?.location?.coordinates[1] || 21.437}
+                  onMouseEnter={(e) => {
+                    e.preventDefault();
+                    setPopUpIndex(true);
+                  }}
+                  onMouseLeave={(e) => {
+                    e.preventDefault();
+                    setPopUpIndex(false);
+                  }}
+                >
+                  <CircleIcon props={item?.data?.current?.pollution?.aqius || 100}>
+                    <p>{item?.data?.current?.pollution?.aqius || 100}</p>
+                  </CircleIcon>
 
-      <ReactMapGL
-        ref={mapRef}
-        {...viewport}
-        mapStyle="mapbox://styles/mapbox/streets-v11"
-        onViewportChange={nextViewport => setViewport(nextViewport)}
-        mapboxApiAccessToken={process.env.REACT_APP_MAP_API_TOKEN}>
-        {
-          geocodingCity.length > 0 && geocodingCity?.map((item) => (
-            <div>
-              <Marker
-                key={item?.data.city}
-                longitude={item?.data.location.coordinates[0]}
-                latitude={item?.data.location.coordinates[1]}
-                onMouseEnter={(e) => {
-                  e.preventDefault();
-                  setPopUpIndex(true);
-                }}
-                onMouseLeave={(e) => {
-                  e.preventDefault();
-                  setPopUpIndex(false);
-                }}
-              >
-                <CircleIcon props={item.data.current.pollution.aqius}>
-                  <p>{item.data.current.pollution.aqius}</p>
-                </CircleIcon>
+                </Marker>
+                {renderPopup(item)}
+              </div>
+            ))
+          }
 
-              </Marker>
-              {renderPopup(item)}
-            </div>
-          ))
-        }
-
-        <GeolocateControl
-          style={geolocateControlStyle}
-          positionOptions={{ enableHighAccuracy: true }}
-          trackUserLocation={true}
-          showUserLocation={true}
-          showUserHeading={true}
-          auto
-        />
-        <FullscreenControl style={fullscreenControlStyle} />
-      </ReactMapGL>
-
+          <GeolocateControl
+            style={geolocateControlStyle}
+            positionOptions={{ enableHighAccuracy: true }}
+            trackUserLocation={true}
+            showUserLocation={true}
+            showUserHeading={true}
+            auto
+          />
+          <FullscreenControl style={fullscreenControlStyle} />
+        </ReactMapGL>
+        <br />
+        <NearestCityInfo />
+      </div>
     </PageContainer>
   )
 }
-const WorldMap = (props) => (
+const WorldMap = () => (
   <MapContextProvider>
-    <WorldMapImpl {...props} />
+    <WorldMapImpl />
   </MapContextProvider>
 );
 

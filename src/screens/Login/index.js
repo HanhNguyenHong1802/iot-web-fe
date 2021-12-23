@@ -1,25 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Facebook, Globe, Linkedin, Lock, Twitter, User } from 'react-feather'
 import './style.css'
 import { useNavigate } from 'react-router-dom'
+import { LoginContextProvider, useLoginContext } from './context'
 
-const Login = () => {
+const LoginImpl = () => {
   const navigate = useNavigate()
+  const { handleSignup, handleLogin } = useLoginContext()
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('')
+
+
   return (
     <div className="container">
       <div className="forms-container">
         <div className="signin-signup">
-          <form action="#" className="sign-in-form">
+          <form onSubmit={() => handleLogin(username, password)} className="sign-in-form">
             <h2 className="title">Sign in</h2>
             <div className="input-field">
               <User style={{ placeSelf: 'center' }} />
-              <input type="text" placeholder="Username" />
+              <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} value={username} />
             </div>
             <div className="input-field">
               <Lock style={{ placeSelf: 'center' }} />
-              <input type="password" placeholder="Password" />
+              <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password} />
             </div>
-            <input type="submit" value="Login" className="btn solid" onClick={navigate("/")}/>
+            <input type="submit" value="Login" className="btn solid" />
             <p className="social-text">Or Sign in with social platforms</p>
             <div className="social-media">
               <a href="#" className="social-icon">
@@ -36,19 +43,23 @@ const Login = () => {
               </a>
             </div>
           </form>
-          <form action="#" className="sign-up-form">
+          <form onSubmit={(e) => {
+            e.preventDefault()
+            handleSignup(username, password)
+          }}
+            className="sign-up-form">
             <h2 className="title">Sign up</h2>
             <div className="input-field">
               <i className="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} value={username} />
             </div>
             <div className="input-field">
               <i className="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" />
+              <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email} />
             </div>
             <div className="input-field">
               <i className="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password} />
             </div>
             <input type="submit" className="btn" value="Sign up" />
             <p className="social-text">Or Sign up with social platforms</p>
@@ -107,4 +118,5 @@ const Login = () => {
     </div>
   )
 }
+const Login = () => <LoginContextProvider><LoginImpl /></LoginContextProvider>
 export default Login

@@ -25,3 +25,16 @@ export async function getSpecializedCity(cityName, stateName, countryName) {
   const response = await getAsync(url);
   return response?.data || []
 }
+
+export async function getRank() { //enterprise
+  let url = baseUrl + `/city_ranking&` + keyString
+  const response = await getAsync(url);
+  return response?.data || []
+
+}
+
+export async function getNearestCity() {
+  let url = baseUrl + `/nearest_city?` + keyString
+  const response = await getAsync(url);
+  return response?.data?.data || {}
+}
