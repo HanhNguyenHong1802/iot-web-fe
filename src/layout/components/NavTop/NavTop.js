@@ -8,7 +8,7 @@ import NavUser from './NavUser';
 import './style.css';
 
 const ItemContainer = styled.div`
-  ${`height:78px; padding-top:16px; `}
+  ${`height:78px; padding-top:16px;font-size: 50px`}
 `
 const LinkItem = styled.span((props) => [
   tw`cursor-pointer font-medium hover:(text-blue-400 text-lg) text-base justify-around `,
@@ -18,7 +18,7 @@ const Dropdown = styled(motion.div)(() => [
   tw`h-auto w-48 border-t border-blue-400 shadow-md bg-gray-100 mt-4 absolute flex flex-col `,
 ])
 const DropdownItem = tw.div`w-full p-2 cursor-pointer my-1 text-lg text-black border-b transform transition-all duration-75 hover:bg-gray-200`
-const HeaderContainer = tw.div`h-16 w-full shadow-md fixed top-0 animate-bounce z-40 flex justify-between`
+const HeaderContainer = tw.div`h-20 w-full shadow-md fixed top-0 animate-bounce z-40 flex justify-between`
 const BorderContainer = tw.div`w-full flex xl:max-w-screen-xl lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm mx-auto`
 const LogoHeader = tw.img`cursor-pointer ml-auto sm:ml-0 h-full`
 const NavBar = tw.div`text-left justify-around   ml-5 mr-10 text-xl hidden md:flex transition-all duration-300 lg:w-1/2 lg:translate-x-0 -translate-x-12 opacity-0 lg:opacity-100 w-1/3  `

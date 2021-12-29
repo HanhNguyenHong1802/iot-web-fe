@@ -9,8 +9,10 @@ const HomePage = () => {
     <>
       <NavTop />
       <WorldMap />
+      <div className="blob"></div>
       <Cards />
       <Footer />
+
     </>
   )
 }

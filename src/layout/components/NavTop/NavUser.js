@@ -18,7 +18,7 @@ const NameUser = styled.div`
 `
 const Span = tw.span`ml-3`
 const Dropdown = styled(motion.div)(() => [
-  tw`h-auto w-48 border-t border-blue-400 shadow-md mt-4 absolute flex flex-col `,
+  tw`h-auto w-48 border-t border-blue-400 shadow-md mt-4 absolute flex flex-col`,
 ])
 const DropdownItem = tw.div`w-full flex p-2 cursor-pointer my-1 text-lg font-medium border-b transform transition-all duration-75 hover:(text-blue-400 text-xl)`
 
@@ -54,7 +54,7 @@ const NavUser = () => {
           variants={{
             current: {
               opacity: 1,
-              y: 80,
+              y: 83,
               display: "",
             },
             hidden: {

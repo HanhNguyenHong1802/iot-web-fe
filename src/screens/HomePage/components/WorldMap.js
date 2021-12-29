@@ -1,4 +1,4 @@
-import React, { memo, useRef, useState } from 'react';
+import React, { memo, useRef, useState, useEffect } from 'react';
 import { Search } from 'react-feather';
 import ReactMapGL, { FullscreenControl, GeolocateControl, Marker, Popup } from 'react-map-gl';
 import tw, { styled } from 'twin.macro';
@@ -7,7 +7,7 @@ import "../style.css";
 import NearestCityInfo from './NearestCityInfo';
 
 const HeaderContainer = tw.div`flex pt-7 justify-around items-center`
-const Header = tw.h1`w-1/3`
+const Header = tw.h1``
 const SearchBar = tw.input`w-1/2 outline-none h-12 rounded-xl border-none items-end shadow-xl p-2 font-semibold`
 const PageContainer = tw.div`p-5 z-10`
 
@@ -31,7 +31,7 @@ const WorldMapImpl = () => {
   const { geocodingCity } = useMapContext();
   const [viewport, setViewport] = useState({
     width: "50%",
-    height: 600,
+    height: '805px',
     latitude: 21.437,
     longitude: 105.123,
     zoom: 4
@@ -67,14 +67,23 @@ const WorldMapImpl = () => {
   };
 
 
+  setInterval(() => {
+    const h1 = document.getElementsByClassName("headerPage");
+    h1.onanimationend = function () {
+      h1.classList.add("anim-end");
+      h1.classList.remove("anim-restart");
+    }
+  }, 10000);
+
+
   return (
     <PageContainer>
       <HeaderContainer>
-        <Header>Explore the air quality anywhere in the world</Header>
-        <SearchBar placeholder="   Your country, city or location ..." />
-        <Search style={{ position: 'absolute', right: 0, marginRight: '6.2rem', background: "#fff" }} />
+        <Header className='headerPage' id='headerPage'>Explore the air quality anywhere in the world</Header>
+        {/* <SearchBar placeholder="   Your country, city or location ..." />
+        <Search style={{ position: 'absolute', right: 0, marginRight: '6.2rem', background: "#fff" }} /> */}
       </HeaderContainer>
-      <div style={{display:'flex', gap:'50px'}}>
+      <div style={{ display: 'flex', gap: '50px' }}>
         <ReactMapGL
           ref={mapRef}
           {...viewport}

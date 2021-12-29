@@ -62,13 +62,7 @@ function Footer() {
       </div>
       <section className='social-media'>
         <div className='social-media-wrap'>
-          <div className='footer-logo'>
-            <Link to='/' className='social-logo'>
-              TRVL
-              <i className='fab fa-typo3' />
-            </Link>
-          </div>
-          <small className='website-rights'>TRVL © 2021</small>
+          <p className='website-rights'>IoT Web © 2021</p>
           <div className='social-icons'>
             <Link
               className='social-icon-link facebook'

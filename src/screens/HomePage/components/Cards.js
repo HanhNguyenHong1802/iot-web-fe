@@ -5,42 +5,51 @@ import CardItem from './CardItem';
 function Cards() {
   return (
     <div className='cards'>
-      <h1>Check out these EPIC Destinations!</h1>
+      <h1>Hít thở không khí sạch hơn!</h1>
+      <h3>Bảo vệ không khí của bạn mọi lúc, mọi nơi</h3>
       <div className='cards__container'>
         <div className='cards__wrapper'>
           <ul className='cards__items'>
             <CardItem
-              src='images/img-9.jpg'
-              text='Explore the hidden waterfall deep inside the Amazon Jungle'
-              label='Adventure'
+              src='images/air-quality-for-home.webp'
+              text='Chất lượng không khí cho gia đình'
+              label='Home'
               path='/explore'
             />
             <CardItem
-              src='images/img-2.jpg'
-              text='Travel through the Islands of Bali in a Private Cruise'
-              label='Luxury'
+              src='images/air-quality-on-the-go.webp'
+              text='Chất lượng không khí khi di chuyển'
+              label='On the go'
+              path='/explore'
+            />
+            <CardItem
+              src='images/air-quality-for-offices.webp'
+              text='Chất lượng không khí cho văn phòng'
+              label='Office'
               path='/explore'
             />
           </ul>
           <ul className='cards__items'>
-            <CardItem
-              src='images/img-3.jpg'
-              text='Set Sail in the Atlantic Ocean visiting Uncharted Waters'
-              label='Mystery'
+            
+          <CardItem
+              src='images/Schools.webp'
+              text='Chất lượng không khí cho trường học'
+              label='School'
               path='/explore'
             />
             <CardItem
-              src='images/img-4.jpg'
-              text='Experience Football on Top of the Himilayan Mountains'
-              label='Adventure'
+              src='images/HospitalsClinics.webp'
+              text='Chất lượng không khí cho bệnh viện'
+              label='Hospitals Clinics'
               path='/explore'
             />
             <CardItem
-              src='images/img-8.jpg'
-              text='Ride through the Sahara Desert on a guided camel tour'
-              label='Adrenaline'
+              src='images/Museums.webp'
+              text='Chất lượng không khí cho bảo tàng'
+              label='Museums'
               path='/explore'
             />
+            
           </ul>
         </div>
       </div>

@@ -150,7 +150,7 @@ const NearestCityInfoImpl = () => {
           alt="img"
           width={100}
           height={100}
-          style={{ right: 0, position: 'absolute', marginRight: 40, paddingBottom: 35 }} />
+          style={{ right: 0, position: 'absolute', marginRight: 40, paddingBottom: 30 }} />
       </OverViewDetail>
 
       <TableDetail>
