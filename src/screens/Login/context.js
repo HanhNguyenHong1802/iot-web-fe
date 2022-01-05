@@ -1,8 +1,8 @@
 import { createContext, useContext, useMemo, useState } from "react";
+import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import { toastError, toastSuccess } from "../../constant/toast";
-import { signup, login } from "../../services/authenService";
+import { login, signup } from "../../services/authenService";
 
 
 //context
@@ -14,6 +14,8 @@ export const useLoginContext = () => useContext(LoginContext)
 //provider
 export const LoginContextProvider = ({ children }) => {
   const navigate = useNavigate()
+  const [cookies, setCookie, removeCookie] = useCookies(['currentuser']);
+  const [userid, setUserid] = useState("")
   const handleSignup = async (username, password) => {
     let tmp = `{ "username": "${username}", "password": "${password}" }`
     let params = JSON.parse(tmp)
@@ -22,7 +24,8 @@ export const LoginContextProvider = ({ children }) => {
       if (response?.password) {
         console.log(`response?.password`, response?.password)
         toastSuccess("Success Notification !")
-        navigate('/')
+        setTimeout(() => window.location.reload(), 2000)
+        // navigate('/')
       }
       else
         toastError(response?.error)
@@ -36,12 +39,13 @@ export const LoginContextProvider = ({ children }) => {
     let tmp = `{ "username": "${username}", "password": "${password}" }`
     let params = JSON.parse(tmp)
     if (username && password) {
-      console.log(`username`, username)
       const response = await login(params)
-      if (response?.password) {
-        console.log(`response?.password`, response?.password)
+      if (response?.token) {
         toastSuccess("Success Notification !")
-        navigate('/')
+        await setCookie("currentuser", response?.token)
+
+        setTimeout(() => window.location.reload(), 3000)
+
       }
       else
         toastError(response?.error)

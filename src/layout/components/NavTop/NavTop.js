@@ -8,16 +8,16 @@ import NavUser from './NavUser';
 import './style.css';
 
 const ItemContainer = styled.div`
-  ${`height:78px; padding-top:16px;font-size: 50px`}
+  ${`height:78px; padding-top:16px;font-size: 30px`}
 `
 const LinkItem = styled.span((props) => [
   tw`cursor-pointer font-medium hover:(text-blue-400 text-lg) text-base justify-around `,
   props.isActive && tw`text-blue-400 font-bold`
 ])
 const Dropdown = styled(motion.div)(() => [
-  tw`h-auto w-48 border-t border-blue-400 shadow-md bg-gray-100 mt-4 absolute flex flex-col `,
+  tw`h-auto w-48 border-t-default border-blue-400 shadow-md bg-gray-100 mt-4 absolute flex flex-col `,
 ])
-const DropdownItem = tw.div`w-full p-2 cursor-pointer my-1 text-lg text-black border-b transform transition-all duration-75 hover:bg-gray-200`
+const DropdownItem = tw.div`w-full p-2 cursor-pointer my-1 text-lg text-black border-b-default transform transition-all duration-75 hover:bg-gray-200`
 const HeaderContainer = tw.div`h-20 w-full shadow-md fixed top-0 animate-bounce z-40 flex justify-between`
 const BorderContainer = tw.div`w-full flex xl:max-w-screen-xl lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm mx-auto`
 const LogoHeader = tw.img`cursor-pointer ml-auto sm:ml-0 h-full`
@@ -81,7 +81,7 @@ const NavTop = ({ OpenClick }) => {
   return (
     <HeaderContainer className="bg-memu-bar">
       <BorderContainer>
-        <LogoHeader src="hot-weather.png" alt="Logo" onClick={() => history.push('/')} />
+        <LogoHeader src="hot-weather.png" alt="Logo" onClick={() => history('/')} />
         <NavBar>
           <RenderNavItems />
         </NavBar>

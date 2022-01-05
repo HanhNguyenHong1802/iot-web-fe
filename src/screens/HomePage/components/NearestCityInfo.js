@@ -15,7 +15,7 @@ const OverViewSumary = styled.div(({ props }) => [
 ])
 const AqiValueWrapper = tw.div`flex-row flex`
 const AqiBox = styled.div(({ props }) => [
-  tw`text-white flex-col items-start rounded mr-6 p-3 flex bg-green-700 `,
+  tw`text-white flex-col items-start rounded-default mr-6 p-3 flex bg-green-700 `,
   `width:116px;height:116px`,
   props <= 50 && tw`bg-green-500`,
   props <= 100 && props >= 51 && tw`bg-yellow-700`,
@@ -25,7 +25,9 @@ const AqiBox = styled.div(({ props }) => [
   props > 300 && tw`bg-red-900`
 ])
 
-const AqiContent = tw.span`text-4xl`
+const AqiContent = styled.span(({ props }) => [
+  props <= 150 && props >= 101 ? tw`text-xl` : tw`text-4xl`
+])
 
 const AqiUnit = tw.p`text-base uppercase contents pb-4`
 const AqiValue = tw.p`text-2xl contents absolute mb-0`
@@ -112,7 +114,7 @@ const NearestCityInfoImpl = () => {
           <AqiStatus>
             <span>chỉ số AQI trực tiếp</span>
             <br />
-            <AqiContent>{status}</AqiContent>
+            <AqiContent props={nearestCity?.current?.pollution?.aqius||0}>{status}</AqiContent>
           </AqiStatus>
 
           <img src={face} alt="img" width={116} height={116} />

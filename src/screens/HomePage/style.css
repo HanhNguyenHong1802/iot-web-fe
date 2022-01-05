@@ -194,7 +194,7 @@ h1 {
   }
 
   to {
-    transform: translate(1000px, 100px) rotate(-10deg);
+    transform: translate(600px, 100px) rotate(-10deg);
     border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
   }
 }
@@ -206,7 +206,7 @@ h1 {
   }
 
   to {
-    transform: translate(1000px, 100px) rotate(-10deg);
+    transform: translate(600px, 100px) rotate(-10deg);
     border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
   }
 }

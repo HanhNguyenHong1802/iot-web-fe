@@ -1,10 +1,10 @@
 import React from 'react'
 
-const AtHome = () => {
+const Device = () => {
   return (
     <div>
       
     </div>
   )
 }
-export default AtHome
+export default Device

@@ -1,12 +1,11 @@
-import React, { memo, useRef, useState, useEffect } from 'react';
-import { Search } from 'react-feather';
+import React, { memo, useRef, useState } from 'react';
 import ReactMapGL, { FullscreenControl, GeolocateControl, Marker, Popup } from 'react-map-gl';
 import tw, { styled } from 'twin.macro';
 import { MapContextProvider, useMapContext } from '../context';
 import "../style.css";
 import NearestCityInfo from './NearestCityInfo';
 
-const HeaderContainer = tw.div`flex pt-7 justify-around items-center`
+const HeaderContainer = tw.div`flex pt-8 justify-around items-center`
 const Header = tw.h1``
 const SearchBar = tw.input`w-1/2 outline-none h-12 rounded-xl border-none items-end shadow-xl p-2 font-semibold`
 const PageContainer = tw.div`p-5 z-10`
@@ -17,7 +16,7 @@ const geolocateControlStyle = {
 };
 
 const CircleIcon = styled.div(({ props }) => [
-  tw`rounded-full text-white w-9 h-9 text-sm`,
+  tw`rounded-full text-white w-8 h-8 text-sm`,
   props <= 50 && tw`bg-green-500`,
   props <= 100 && props >= 51 && tw`bg-yellow-500`,
   props <= 150 && props >= 101 && tw`bg-red-300`,
