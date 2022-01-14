@@ -6,9 +6,9 @@ const navTopConfigs = [
         item: []
     },
     {
-        id: "Community",
-        name:"Community",
-        navLink:"/community",
+        id: "Devices",
+        name:"Devices",
+        navLink:"/devices",
         item: []
     },
     {

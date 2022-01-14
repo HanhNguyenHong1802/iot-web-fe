@@ -102,3 +102,43 @@ export async function postAsyncWithToken(url, param) {
       return { status, data: {}, message: (error[0]?.message || ''), code: (error[0]?.code || 0) }
   }
 }
+
+export async function deleteAsyncWithToken(url, param) {
+  try {
+      const response = await Axios.delete(url, {
+          headers: {
+              'Authorization': 'Bearer ' + getCookie(),
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+              'Cache-Control': 'no-cache'
+          },
+          params: param
+      })
+
+      return response;
+  } catch (ex) {
+      const { status = 400, data = {} } = ex?.response || {};
+      const error = data?.errors || [];
+      return { status, data: {}, message: (error[0]?.message || ''), code: (error[0]?.code || 0) }
+  }
+}
+
+export async function putAsyncWithToken(url, param) {
+  try {
+      const response = await Axios.put(url, {
+          headers: {
+              'Authorization': 'Bearer ' + getCookie(),
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+              'Cache-Control': 'no-cache'
+          },
+          params: param
+      })
+
+      return response;
+  } catch (ex) {
+      const { status = 400, data = {} } = ex?.response || {};
+      const error = data?.errors || [];
+      return { status, data: {}, message: (error[0]?.message || ''), code: (error[0]?.code || 0) }
+  }
+}

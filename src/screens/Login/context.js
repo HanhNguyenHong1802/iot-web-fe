@@ -44,7 +44,7 @@ export const LoginContextProvider = ({ children }) => {
         toastSuccess("Success Notification !")
         await setCookie("currentuser", response?.token)
 
-        setTimeout(() => window.location.reload(), 3000)
+        setTimeout(() => window.location.reload(), 2000)
 
       }
       else
