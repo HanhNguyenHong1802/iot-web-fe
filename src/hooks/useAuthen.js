@@ -22,12 +22,11 @@ const useAuthen = () => {
         }
       })
       .catch((error) => {
-        console.log(`error`, error)
         setIsAuthenticated(false)
       })
       .finally(() =>
         setLoading(false))
-  }, [isAuthenticated])
+  }, [])
 
   return { isAuthenticated, loading, username }
 }

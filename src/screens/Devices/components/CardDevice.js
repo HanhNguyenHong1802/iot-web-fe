@@ -1,18 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { Edit2, Trash } from 'react-feather'
 import tw from 'twin.macro'
+import { useDevicesContext } from '../context'
 import '../style.css'
-import { ChevronRight, Edit2 } from 'react-feather'
 import ModalDevices from './ModalDevices'
 
 const ToggleContainer = tw.div`flex items-center justify-center w-full mb-12`
 const LabelToggle = tw.label`flex items-center cursor-pointer ml-5`
-const InputToggle = tw.input`sr-only`
-const LineInput = tw.div`w-10 h-4 bg-gray-400 rounded-full shadow-inner`
-const DotStyle = tw.div`divide-dotted absolute w-6 h-6 bg-white rounded-full shadow-default transition-default`
 const CardContainer = tw.div`shadow-xl rounded-xl min-w-1/4 m-6`
 
 const CardDevice = ({ item }) => {
-  const [openModal, setOpenModal] = useState(false)
+  const { deleteDevice, openModal, setOpenModal, getDeviceItemById, deviceItem } = useDevicesContext()
+
   return (
     <CardContainer>
       <ToggleContainer>
@@ -25,15 +24,29 @@ const CardDevice = ({ item }) => {
           for="toogleA"
         >
           <div style={{ position: 'relative', display: 'flex', paddingRight: '1rem' }}>
-            {/* <InputToggle id="toogleA" type="checkbox" className="sr-only" checked={item?.connectState==='ON'} />
-            <LineInput />
-            <DotStyle style={{ left: '-0.25rem', top: '-0.25rem' }} className='dot'/> */}
 
-            <ModalDevices item={item} />
 
+            <div style={{ display: 'block' }}>
+              <div className="containerDevice">
+                <div className="interior">
+                  <div className="btn" style={{ width: 'fit-content' }}
+                    onClick={async () => {
+                      getDeviceItemById(item?._id)
+                      setOpenModal(true)
+                    }
+                    }><Edit2 /></div>
+                </div>
+              </div><br />
+              <div className="containerDevice">
+                <div className="interior">
+                  <div className="btn" style={{ width: 'fit-content' }} onClick={() => deleteDevice(item?._id)}><Trash /></div>
+                </div>
+              </div>
+            </div>
           </div>
+          {openModal && <ModalDevices item={deviceItem} />}
         </LabelToggle>
-        
+
       </ToggleContainer>
 
     </CardContainer>

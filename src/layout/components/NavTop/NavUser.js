@@ -63,7 +63,7 @@ const NavUser = () => {
           variants={{
             current: {
               opacity: 1,
-              y: 83,
+              y: 79,
               display: "",
             },
             hidden: {

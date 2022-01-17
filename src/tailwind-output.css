@@ -102,10 +102,6 @@ code {
  * Add the correct font size in all browsers.
  */
 
-small {
-  font-size: 80%;
-}
-
 /**
  * Prevent `sub` and `sup` elements from affecting the line height in
  * all browsers.
@@ -495,44 +491,16 @@ img {
   margin-bottom: calc(1.5rem * var(--space-y-reverse));
 }
 
-.divide-dotted > :not(template) ~ :not(template) {
-  border-style: dotted;
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
 .bg-white {
   --bg-opacity: 1;
   background-color: #fff;
   background-color: rgba(255, 255, 255, var(--bg-opacity));
 }
 
-.bg-primary-1000 {
-  --bg-opacity: 1;
-  background-color: #04C3FF;
-  background-color: rgba(4, 195, 255, var(--bg-opacity));
-}
-
 .bg-gray-100 {
   --bg-opacity: 1;
   background-color: #f7fafc;
   background-color: rgba(247, 250, 252, var(--bg-opacity));
-}
-
-.bg-gray-400 {
-  --bg-opacity: 1;
-  background-color: #cbd5e0;
-  background-color: rgba(203, 213, 224, var(--bg-opacity));
 }
 
 .bg-red-300 {
@@ -607,12 +575,6 @@ img {
   background-color: rgba(107, 70, 193, var(--bg-opacity));
 }
 
-.hover\:bg-primary-1300:hover {
-  --bg-opacity: 1;
-  background-color: #128CF9;
-  background-color: rgba(18, 140, 249, var(--bg-opacity));
-}
-
 .hover\:bg-gray-200:hover {
   --bg-opacity: 1;
   background-color: #edf2f7;
@@ -629,6 +591,12 @@ img {
   --bg-opacity: 1;
   background-color: #90cdf4;
   background-color: rgba(144, 205, 244, var(--bg-opacity));
+}
+
+.hover\:bg-blue-700:hover {
+  --bg-opacity: 1;
+  background-color: #2b6cb0;
+  background-color: rgba(43, 108, 176, var(--bg-opacity));
 }
 
 .bg-center {
@@ -752,8 +720,8 @@ img {
   justify-content: space-around;
 }
 
-.float-right {
-  float: right;
+.float-left {
+  float: left;
 }
 
 .font-sans {
@@ -770,14 +738,6 @@ img {
 
 .font-bold {
   font-weight: 700;
-}
-
-.h-4 {
-  height: 1rem;
-}
-
-.h-6 {
-  height: 1.5rem;
 }
 
 .h-8 {
@@ -881,6 +841,10 @@ img {
   margin-bottom: 0.5rem;
 }
 
+.mb-3 {
+  margin-bottom: 0.75rem;
+}
+
 .ml-3 {
   margin-left: 0.75rem;
 }
@@ -899,10 +863,6 @@ img {
 
 .mr-6 {
   margin-right: 1.5rem;
-}
-
-.mr-8 {
-  margin-right: 2rem;
 }
 
 .mb-8 {
@@ -1060,10 +1020,6 @@ img {
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
-.shadow-inner {
-  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
-}
-
 .text-left {
   text-align: left;
 }
@@ -1153,16 +1109,8 @@ img {
   white-space: nowrap;
 }
 
-.w-6 {
-  width: 1.5rem;
-}
-
 .w-8 {
   width: 2rem;
-}
-
-.w-10 {
-  width: 2.5rem;
 }
 
 .w-12 {
