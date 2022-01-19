@@ -6,6 +6,7 @@ import Devices from './screens/Devices';
 import HomePage from './screens/HomePage';
 import Login from './screens/Login';
 import Profile from './screens/Profile';
+import Statistics from './screens/Statistics';
 const AppRouter = () => {
   const [routerConfig, setRouterConfig] = useState([]);
 
@@ -38,6 +39,7 @@ const AppRouter = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/user-profile" element={<Profile />} />
             <Route path="/devices" element={<Devices />} />
+            <Route path="/devices/:id" element={<Statistics />} />
           </>
           :
           <>

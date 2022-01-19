@@ -1,5 +1,6 @@
 import React from 'react'
-import { Edit2, Trash } from 'react-feather'
+import { Edit2, Eye, Trash } from 'react-feather'
+import { useNavigate } from 'react-router-dom'
 import tw from 'twin.macro'
 import { useDevicesContext } from '../context'
 import '../style.css'
@@ -11,7 +12,7 @@ const CardContainer = tw.div`shadow-xl rounded-xl min-w-1/4 m-6`
 
 const CardDevice = ({ item }) => {
   const { deleteDevice, openModal, setOpenModal, getDeviceItemById, deviceItem } = useDevicesContext()
-
+  const navigate = useNavigate()
   return (
     <CardContainer>
       <ToggleContainer>
@@ -40,6 +41,12 @@ const CardDevice = ({ item }) => {
               <div className="containerDevice">
                 <div className="interior">
                   <div className="btn" style={{ width: 'fit-content' }} onClick={() => deleteDevice(item?._id)}><Trash /></div>
+                </div>
+              </div>
+              <br />
+              <div className="containerDevice">
+                <div className="interior">
+                  <div className="btn" style={{ width: 'fit-content' }} onClick={() => window.location.replace(`/devices/${item?._id}`)}><Eye /></div>
                 </div>
               </div>
             </div>

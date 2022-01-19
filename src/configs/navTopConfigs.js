@@ -28,12 +28,6 @@ const navTopConfigs = [
         name:"News",
         navLink:"/news",
         item: []
-    },
-    {
-        id: "Support",
-        name:"Support",
-        navLink:"/support",
-        item: []
     }
 ]
 export default navTopConfigs;
