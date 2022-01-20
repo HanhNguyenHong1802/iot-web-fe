@@ -9,24 +9,17 @@ export const useStatisticsContext = () => useContext(StatisticsContext)
 
 //provider
 export const StatisticsContextProvider = ({ children }) => {
-  const [deviceItem, setDeviceItem] = useState()
-  const [label, setLabel] = useState([])
-  const [co2, setCo2] = useState([])
+  const [deviceItem, setDeviceItem] = useState([])
 
   useEffect(() => {
     getDeviceItemById()
-    deviceItem?.stateHistory?.forEach((e) => {
-      setLabel([...label, ...e?.at])
-      setCo2([...co2, ...e?.co2])
-    })
   }, [])
 
   const getDeviceItemById = async () => {
-
     try {
       if (window) var id = window.location.pathname.split('/')
       let tmp = await getDeviceById(id[2])
-      if (tmp?.device) setDeviceItem(tmp?.device)
+      setDeviceItem(tmp?.device?.stateHistory || {})
     } catch (error) {
       console.log(`error`, error)
     }
@@ -36,10 +29,10 @@ export const StatisticsContextProvider = ({ children }) => {
 
 
   const value = useMemo(() => ({
-    deviceItem, label, co2
+    deviceItem
   }),
     // eslint-disable-next-line no-sequences
-    [deviceItem, label, co2])
+    [deviceItem])
   return (
     <StatisticsContext.Provider value={value}>
       {children}

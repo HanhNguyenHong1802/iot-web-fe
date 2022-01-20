@@ -81,7 +81,7 @@ const NavTop = ({ OpenClick }) => {
   return (
     <HeaderContainer className="bg-memu-bar">
       <BorderContainer>
-        <LogoHeader src="hot-weather.png" alt="Logo" onClick={() => history('/')} />
+        <LogoHeader src="hot-weather-logo.png" alt="Logo" onClick={() => history('/')} />
         <NavBar>
           <RenderNavItems />
         </NavBar>

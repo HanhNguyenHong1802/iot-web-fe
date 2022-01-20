@@ -19,7 +19,7 @@ const CardDevice = ({ item }) => {
         <div style={{ display: 'block', padding: '1rem' }}>
           <h2>Device's id: {item?._id}</h2>
           <h2>Device's name: {item?.deviceName}</h2>
-          <h2>Device's location: {item?.location}</h2>
+          <h2>Device's userid: {item?.userId}</h2>
         </div>
         <LabelToggle
           for="toogleA"
