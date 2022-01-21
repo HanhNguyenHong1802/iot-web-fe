@@ -46,6 +46,7 @@ const NavUser = () => {
       const res = await logoutUser()
       if (!res?.error) {
         await removeCookie("currentuser")
+        await removeCookie("userid")
         window.location.reload()
       }
     }

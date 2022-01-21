@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { getNearestCity } from "../../services/airVisualService";
 import { getDeviceById } from "../../services/devicesServices";
 
 //context
@@ -9,30 +10,38 @@ export const useStatisticsContext = () => useContext(StatisticsContext)
 
 //provider
 export const StatisticsContextProvider = ({ children }) => {
-  const [deviceItem, setDeviceItem] = useState([])
+  const [device, setDevice] = useState()
+  const [nearestCity, setNearestCity] = useState()
 
   useEffect(() => {
     getDeviceItemById()
+    infoNearestCity()
   }, [])
 
   const getDeviceItemById = async () => {
     try {
       if (window) var id = window.location.pathname.split('/')
       let tmp = await getDeviceById(id[2])
-      setDeviceItem(tmp?.device?.stateHistory || {})
+      setDevice(tmp?.device || {})
     } catch (error) {
       console.log(`error`, error)
     }
 
   }
 
+  const infoNearestCity = async () => {
+    let info = await getNearestCity()
+    setNearestCity(info)
+
+  }
+
 
 
   const value = useMemo(() => ({
-    deviceItem
+    device, nearestCity
   }),
     // eslint-disable-next-line no-sequences
-    [deviceItem])
+    [device, nearestCity])
   return (
     <StatisticsContext.Provider value={value}>
       {children}

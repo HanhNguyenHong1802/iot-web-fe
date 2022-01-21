@@ -148,7 +148,7 @@ const NearestCityInfoImpl = () => {
           <OverViewTittle>Thời tiết hiện tại ở {nearestCity?.city || "Hanoi"}, {nearestCity?.country || "Vietnam"} ra sao?</OverViewTittle>
         </div>
         <img
-          src={`/aqi/${nearestCity?.current?.weather?.ic}.png` || '01d.png'}
+          src={`/aqi/${nearestCity?.current?.weather?.ic ||`01d`}.png`}
           alt="img"
           width={100}
           height={100}

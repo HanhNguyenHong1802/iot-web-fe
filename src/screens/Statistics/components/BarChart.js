@@ -46,15 +46,15 @@ const BarChart = ({ deviceItem }) => {
     humidity.push(element?.humidity)
     temperature.push(element?.temperature)
   });
-  label = label.slice(label?.length - 11, label?.length - 1)
+  label = label.slice(label?.length - 11, label?.length - 1).reverse()
 
-  co2 = co2.slice(co2?.length - 11, co2?.length - 1)
+  co2 = co2.slice(co2?.length - 11, co2?.length - 1).reverse()
 
-  dust = dust.slice(dust?.length - 11, dust?.length - 1)
+  dust = dust.slice(dust?.length - 11, dust?.length - 1).reverse()
 
-  humidity = humidity.slice(humidity?.length - 11, humidity?.length - 1)
+  humidity = humidity.slice(humidity?.length - 11, humidity?.length - 1).reverse()
 
-  temperature = temperature.slice(temperature?.length - 11, temperature?.length - 1)
+  temperature = temperature.slice(temperature?.length - 11, temperature?.length - 1).reverse()
 
 
   //   const data = {
@@ -81,7 +81,7 @@ const BarChart = ({ deviceItem }) => {
             {
               label: "CO2",
               backgroundColor: [
-                "#3e95cd",
+                "#FF6363",
               ],
               data: co2
             }
@@ -103,7 +103,7 @@ const BarChart = ({ deviceItem }) => {
             {
               label: "Dust",
               backgroundColor: [
-                "#3e95cd",
+                "#FFAB76",
               ],
               data: dust
             }
@@ -125,7 +125,7 @@ const BarChart = ({ deviceItem }) => {
             {
               label: "Humidity",
               backgroundColor: [
-                "#3e95cd",
+                "#FFFDA2",
               ],
               data: humidity
             }
@@ -148,7 +148,7 @@ const BarChart = ({ deviceItem }) => {
             {
               label: "Temperature",
               backgroundColor: [
-                "#3e95cd",
+                "#BAFFB4",
               ],
               data: temperature
             }
