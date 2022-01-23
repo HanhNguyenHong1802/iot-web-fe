@@ -192,3 +192,50 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+.sun {
+  width: 100px;
+  position: absolute;
+  transform: rotate(0) translateX(-150px);
+}
+.item-1 {
+  bottom: 50%;
+  left: 25%;
+  animation: rot 5s linear infinite;
+}
+.item-2 {
+  bottom: 50%;
+  left: 75%;
+  transform: rotate(0) translateX(-150px);
+  animation: rise 5s linear infinite;
+}
+.item-3 {
+  bottom: 20%;
+  left: 50%;
+  transform-origin: 150% 150%;
+  animation: fail 5s linear infinite;
+}
+@keyframes rot {
+  from {
+    transform: rotate(0) translateX(-150px);
+  }
+  to {
+    transform: rotate(360deg) translateX(-150px);
+  }
+}
+@keyframes rise {
+  from {
+    transform: rotate(0) translateX(-150px) rotate(0);
+  }
+  to {
+    transform: rotate(360deg) translateX(-150px) rotate(-360deg);
+  }
+}
+@keyframes fail {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
