@@ -20,9 +20,14 @@ const ModalDevices = ({ item }) => {
         <ContainerModal>
           <form onSubmit={(e) => {
             e.preventDefault()
-            if (deviceName !== item?.deviceName && stateDevice !== item?.connectState)
-              updateDevice(item?._id, deviceName, stateDevice)
-              else toastError('Nothing was changed!')
+            // if (deviceName !== item?.deviceName && stateDevice !== item?.connectState) {
+            //   console.log("deviceName = ", deviceName)
+            //   console.log("connectState = ", stateDevice)
+            //   updateDevice(item?._id, deviceName, stateDevice)
+            // }
+            //   else toastError('Nothing was changed!')
+            updateDevice(item?._id, deviceName, stateDevice)
+
           }}>
             <div className="modal-close" onClick={() => setOpenModal(false)}><X /></div>
             <h1 style={{ color: 'black' }}>Device</h1><br />
