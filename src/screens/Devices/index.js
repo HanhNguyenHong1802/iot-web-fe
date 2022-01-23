@@ -14,13 +14,7 @@ const DevicesImpl = () => {
   return (
 
     <>
-        <img className="sun item-1"
-             src="https://cdn2.iconfinder.com/data/icons/weather-emoticon/64/07_sun_smile_happy_emoticon_weather_smiley-512.png"></img>
-        <img className="sun item-2"
-             src="https://cdn2.iconfinder.com/data/icons/weather-emoticon/64/07_sun_smile_happy_emoticon_weather_smiley-512.png"></img>
-        <img className="sun item-3"
-             src="https://cdn2.iconfinder.com/data/icons/weather-emoticon/64/07_sun_smile_happy_emoticon_weather_smiley-512.png"></img>
-        <NavTop />
+      <NavTop />
       <h1 style={{ marginTop: '8rem' }}>Devices Management</h1>
       <AddButton onClick={() => setOpenAddModal(true)}>+ Add Device</AddButton>
       <CardContainer>
@@ -31,6 +25,7 @@ const DevicesImpl = () => {
       </CardContainer>
       {/* <CardDevice/> */}
       {openAddModal && <AddModal />}
+      <div className="blob" style={{marginTop:'-450px'}}/>
     </>
   )
 }

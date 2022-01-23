@@ -1167,6 +1167,10 @@ img {
   z-index: 40;
 }
 
+.z-50 {
+  z-index: 50;
+}
+
 .transform {
   --transform-translate-x: 0;
   --transform-translate-y: 0;
