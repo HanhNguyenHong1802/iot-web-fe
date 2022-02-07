@@ -29,6 +29,8 @@ export const StatisticsContextProvider = ({ children }) => {
 
   }
 
+  setInterval(getDeviceItemById, 30000)
+
   const infoNearestCity = async () => {
     let info = await getNearestCity()
     setNearestCity(info)
