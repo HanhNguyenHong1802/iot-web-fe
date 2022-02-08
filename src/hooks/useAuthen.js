@@ -26,8 +26,8 @@ const useAuthen = () => {
       })
       .finally(() =>
         setLoading(false))
-  }, [])
+  }, [isAuthenticated])
 
-  return { isAuthenticated, loading, username }
+  return { isAuthenticated, loading, username, setIsAuthenticated }
 }
 export default useAuthen

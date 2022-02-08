@@ -1,4 +1,10 @@
-import { getAsyncWithToken, postAsync, postAsyncWithToken } from "../constant/request";
+import { getAsyncWithToken, postAsync } from "../constant/request";
+
+
+function getCookie(name = 'currentuser') {
+  const v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+  return v ? v[2] : null;
+}
 
 export async function login(params) {
   const url = process.env.REACT_APP_BACK_END + '/users/login'
@@ -17,6 +23,15 @@ export async function getUserInfo() {
 }
 export async function logoutUser() {
   const url = process.env.REACT_APP_BACK_END + '/users/logout'
-  const response = await postAsyncWithToken(url)
-  return response?.data || []
+  await fetch(url, {
+    method: 'POST',
+    cache: 'no-cache',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + getCookie(),
+      'Accept': 'application/json',
+    }
+  },
+  ).then(data => { console.log('data', data?.statusText);return data?.statusText || '' })
+    .catch(err => console.log(`err`, err))
 }

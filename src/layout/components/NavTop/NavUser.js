@@ -7,7 +7,7 @@ import avatarDefault from '../../../assets/avatar_default.png';
 import DarkMode from '../../../ModeScreen/DarkMode';
 import './style.css'
 import useAuthen from '../../../hooks/useAuthen'
-import { logoutUser } from '../../../services/authenService';
+import { getUserInfo, logoutUser } from '../../../services/authenService';
 import { useCookies } from 'react-cookie';
 const RightNavBar = tw.div`flex items-center ml-auto`
 const UserContainer = styled.div`
@@ -28,9 +28,10 @@ const NavUser = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [avatar, setAvatar] = useState(null);
   const history = useNavigate()
-  const { username } = useAuthen()
+  const { username, isAuthenticated, setIsAuthenticated } = useAuthen()
   const [cookies, setCookie, removeCookie] = useCookies(["currentuser"]);
-  let logout
+  const navigate = useNavigate()
+
   const UserOptions = [
     { id: 'profile', name: "Infomation", link: "/user-profile", display: true, icon: <User /> },
     // { id: 'change_password', name: "Đổi mật khẩu", link: "/change-password", display: (idp === "local") ? true : false, icon: <Key /> },
@@ -43,12 +44,26 @@ const NavUser = () => {
 
   const handleItemClick = async ({ id, link }) => {
     if (id === 'logout') {
-      const res = await logoutUser()
-      if (!res?.error) {
-        await removeCookie("currentuser")
-        await removeCookie("userid")
+      await logoutUser()
+      removeCookie("currentuser")
+      removeCookie("userid")
+      const res = await getUserInfo()
+      console.log('res', res);
+
+      console.log('window.location.pathname', window.location.pathname);
+      if (window.location.pathname === '/') {
+        console.log('first');
         window.location.reload()
       }
+
+      else 
+      {
+        console.log('isAuthenticated', isAuthenticated);
+        setIsAuthenticated(false)
+        navigate('/')
+        window.location.reload()
+      }
+        
     }
     else
       link && history(link);
