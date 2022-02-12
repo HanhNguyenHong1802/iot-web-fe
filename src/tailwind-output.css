@@ -1171,6 +1171,11 @@ img {
   z-index: 50;
 }
 
+.gap-10 {
+  grid-gap: 2.5rem;
+  gap: 2.5rem;
+}
+
 .transform {
   --transform-translate-x: 0;
   --transform-translate-y: 0;

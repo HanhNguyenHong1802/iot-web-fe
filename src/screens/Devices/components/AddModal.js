@@ -34,7 +34,11 @@ const AddModal = () => {
             <LabelText>Device State</LabelText>
             <div style={{ float: 'right' }}>
               <label className="switch">
-                <input type="checkbox" onChange={e => setStateDevice(e.target.checked ? "ON" : "OFF")} />
+                <input
+                  type="checkbox"
+                  // onChange={e => setStateDevice(e.target.checked ? "ON" : "OFF")} 
+                  checked={false}
+                />
                 <span className="slider round"></span>
               </label>
             </div>
