@@ -9,7 +9,7 @@ import { DevicesContextProvider, useDevicesContext } from './context'
 const DevicesImpl = () => {
   const { listDevices, setOpenAddModal, openAddModal } = useDevicesContext()
 
-  const CardContainer = tw.div`flex flex-wrap w-full place-content-center z-50`
+  const CardContainer = tw.div`flex flex-wrap w-full place-content-center`
   const AddButton = tw.button`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg border-none float-right mr-5 cursor-pointer`
   return (
 
@@ -18,7 +18,7 @@ const DevicesImpl = () => {
       <h1 style={{ marginTop: '8rem' }}>Devices Management</h1>
       <AddButton onClick={() => setOpenAddModal(true)}>+ Add Device</AddButton>
       <CardContainer>
-        {listDevices.length > 0 && listDevices?.map((i) => (
+        {listDevices?.length > 0 && listDevices?.map((i) => (
           <CardDevice item={i} />
         ))}
 

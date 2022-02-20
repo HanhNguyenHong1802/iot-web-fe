@@ -75,3 +75,8 @@ export async function addDeviceByIdFetch(params = {}) {
   // console.log(`response`, response, params)
 
 }
+export async function getPublicDevices() {
+  let url = process.env.REACT_APP_BACK_END + '/devices/publicDevices'
+  const response = await getAsync(url)
+  return response?.data || []
+}

@@ -14,14 +14,11 @@ export const DevicesContextProvider = ({ children }) => {
   const [openModal, setOpenModal] = useState(false)
   const [deviceItem, setDeviceItem] = useState()
   const [openAddModal, setOpenAddModal] = useState(false)
-  const [currentPosition, setCurrentPosition] = useState([])
+
 
   useEffect(() => {
     getListDevices()
-    navigator.geolocation.getCurrentPosition(function (pos) {
-      setCurrentPosition([...currentPosition, pos?.coords?.latitude])
-      setCurrentPosition([...currentPosition, pos?.coords?.longitude])
-    })
+
   }, [])
 
   const getListDevices = async () => {
@@ -56,18 +53,24 @@ export const DevicesContextProvider = ({ children }) => {
   }
 
   const addDevice = async (id, name, state) => {
-    
-    let tmp = `{ "embedId": "${id}", "deviceName": "${name}", "connectState": "${state}", "location": "${currentPosition}" }`
-    let params = JSON.parse(tmp)
-    const res = await addDeviceByIdFetch(params)
-    console.log('id, name, state', id, name, state, res);
-    if (!res?.error) {
-      toastSuccess("Add Complete!")
-      await getListDevices()
-      window.location.reload()
-    } else {
-      toastError("Add Incomplete!")
-    }
+    let currentPosition = []
+    navigator.geolocation.getCurrentPosition(async function (pos) {
+      currentPosition.push(pos?.coords?.latitude)
+      currentPosition.push(pos?.coords?.longitude)
+      let tmp = `{ "embedId": "${id}", "deviceName": "${name}", "connectState": "OFF"}`
+      let params = JSON.parse(tmp)
+      params.location = [pos?.coords?.latitude, pos?.coords?.longitude]
+      const res = await addDeviceByIdFetch(params)
+      if (!res?.error) {
+        toastSuccess("Add Complete!")
+        await getListDevices()
+        window.location.reload()
+      } else {
+        toastError("Add Incomplete!")
+      }
+    })
+
+
   }
 
   const getDeviceItemById = async (id) => {

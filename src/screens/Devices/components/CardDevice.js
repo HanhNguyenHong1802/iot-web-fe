@@ -8,7 +8,7 @@ import ModalDevices from './ModalDevices'
 
 const ToggleContainer = tw.div`flex items-center justify-center w-full mb-12`
 const LabelToggle = tw.label`flex items-center cursor-pointer ml-5`
-const CardContainer = tw.div`shadow-xl rounded-xl min-w-1/4 m-6 z-50`
+const CardContainer = tw.div`shadow-xl rounded-xl min-w-1/4 m-6`
 
 const CardDevice = ({ item }) => {
   const { deleteDevice, openModal, setOpenModal, getDeviceItemById, deviceItem } = useDevicesContext()

@@ -7,7 +7,7 @@ import '../style.css'
 
 const LabelText = tw.label`float-left mb-3 text-black`
 const ContainerModal = tw.div`w-full`
-const PillButton = tw.input`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full border-none w-full mt-4`
+const PillButton = tw.input`cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full border-none w-full mt-4`
 const AddModal = () => {
   const [deviceName, setDeviceName] = useState('')
   const [deviceId, setDeviceId] = useState('')

@@ -1167,10 +1167,6 @@ img {
   z-index: 40;
 }
 
-.z-50 {
-  z-index: 50;
-}
-
 .gap-10 {
   grid-gap: 2.5rem;
   gap: 2.5rem;
